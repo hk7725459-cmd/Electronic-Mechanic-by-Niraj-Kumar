@@ -1,7 +1,11 @@
-function showMessage() {
-  alert("Hello Niraj! You just clicked the button.");
-}
-function showMessage() {
-  document.querySelector("p").innerText = "You clicked the button!";
-  document.querySelector("p").style.color = "blue";
-}
+// upload.js
+document.querySelector("#uploadForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let formData = new FormData(e.target);
+    let response = await fetch("/upload", {
+        method: "POST",
+        body: formData
+    });
+    let result = await response.text();
+    alert(result);
+});
